@@ -1,0 +1,202 @@
+$font-primary: 'Arial', sans-serif;
+$color-primary: #ffffff;
+$color-secondary: #000000;
+$color-background: #f19e9e;
+$color-footer-background: #CDD3D5;
+$color-wrapper-background: #9c3535;
+$margin-standard: 15px;
+$margin-large: 30px;
+$padding-standard: 20px;
+$shadow-standard: 0 0 10px rgba(0, 0, 0, 0.2);
+$button-color: #9c3535; // Base color for buttons
+$hover-color: lighten($button-color, 15%); // Lighter color for hover
+$active-color: darken($button-color, 15%); // Darker color for active/pressed
+$disabled-color: darken($button-color, 25%); // Darker color for disabled state
+
+
+@mixin flex-container($direction: row, $justify: space-between, $align: center) {
+    display: flex;
+    flex-direction: $direction;
+    justify-content: $justify;
+    align-items: $align;
+}
+
+body {
+    font-family: $font-primary;
+    margin: $margin-standard;
+    background-color: $color-background;
+    color: $color-primary;
+}
+
+h1, h2 {
+    text-align: left;
+}
+
+h1 {
+    color: #000;
+    text-align: center;
+}
+
+h2 {
+    color: $color-secondary;
+    margin-left: 0;
+    text-align: center;
+}
+
+p {
+    margin-left: $margin-large;
+    margin-bottom: $margin-standard;
+}
+
+button {
+    background-color: $button-color;
+    color: $color-primary; // Using the white color variable for text
+    font-size: 20px; // Larger text size
+    padding: 15px 30px; // Larger padding for bigger button size
+    border: none;
+    border-radius: 8px; // Slightly larger border radius for rounded edges
+    cursor: pointer;
+    transition: background-color 0.3s;
+
+    &:hover {
+        background-color: $hover-color;
+    }
+
+    &:active {
+        background-color: $active-color;
+    }
+
+    &:disabled {
+        background-color: $disabled-color;
+        color: darken($color-primary, 50%); // Darken the text color for disabled state
+        cursor: not-allowed;}
+}
+
+.header-container {
+    @include flex-container(row, space-around, center);
+    align-items: center;
+
+    h1 {
+        margin: 0 $margin-large; // Add horizontal margin around the title
+    }
+
+    .mini-img {
+        width: 30px; // Set the width to make them small, adjust as needed
+        height: auto; // Maintain aspect ratio
+        margin: 0 $margin-standard; // Add some space around each dice image
+    }
+}
+
+
+.dice-section {
+    @include flex-container(row, space-between, flex-start);
+}
+
+.score-section {
+    @include flex-container(column, center, center);
+    h3, p {
+        margin-left: 0;
+        text-align: center;
+    }
+}
+
+.control-section {
+    @include flex-container(row, center, center);
+    margin-top: $margin-standard;
+
+    button {
+        margin: 0 $margin-standard;
+    }
+}
+
+.winner-section {
+    @include flex-container(column, center, center);
+    h3, p {
+        margin-left: 0;
+        text-align: center;
+    }
+}
+
+.hidden {
+    display: none;
+}
+
+#rulesSection {
+    margin-top: $margin-standard;
+    background-color: lighten($color-background, 10%);
+    padding: $padding-standard;
+    border-radius: 5px;
+    box-shadow: $shadow-standard;
+    overflow: hidden;
+    transition: height 0.5s ease;
+    height: 0; // Start with 0 height to ensure it's hidden initially
+    color: $color-secondary
+}
+
+.player, .computer {
+    @include flex-container(column, center, center);
+    width: 90%;
+    margin: 0;
+    align-items: center;
+    text-align: center;
+}
+
+.player p, .computer p {
+    text-align: center; // Centers the text within <p>
+    margin-left: 0; // Removes any specific left margin that might be inherited
+    margin-right: 0; // Removes any specific right margin that might be inherited
+    margin-top: 15px;
+}
+
+.player img, .computer img {
+    width: 80%;
+    max-width: 225px;
+    margin: 0 5%;
+}
+
+footer {
+    background-color: $color-footer-background;
+    color: black;
+    padding: 6px;
+    position: sticky;
+    top: 100%;
+    margin: $margin-standard auto;
+    max-width: 1050px;
+}
+
+#winnerMessage {
+    visibility: hidden; // Hide by default
+    opacity: 0;
+    transform: scale(0);
+    transition: visibility 0s, opacity 0.5s, transform 0.5s;
+    font-size: 50px;
+}
+
+#winnerMessage.show {
+    visibility: visible;
+    opacity: 1;
+    transform: scale(1);
+}
+
+
+#wrapper {
+    @include flex-container(column, center, flex-start);
+    max-width: 1024px;
+    margin: auto;
+    background-color: $color-wrapper-background;
+    min-height: 100vh;
+    padding: $padding-standard;
+    box-shadow: $shadow-standard;
+}
+
+@media (min-width: 600px) {
+    #wrapper {
+        @include flex-container(row, space-around, flex-start);
+        flex-wrap: wrap;
+    }
+
+    section {
+        width: calc(50% - 20px);
+        margin: 10px;
+    }
+}

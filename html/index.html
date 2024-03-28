@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Final Project</title>
+    <link rel="icon" type="image/png" href="../favicon/favicon.png">
+    <link rel="stylesheet" href="../style/style.css">
+    <script src="../scripts/script.js" defer="defer"></script>
+    <audio id="winAudio" src="../audio/maxwin.mp3" preload="auto"></audio>
+</head>
+<body>
+    <div id="wrapper">
+        <div class="game-container">
+            <div class="header-container">
+                <img src="../images/token.png" alt="Poker Token" class="mini-img">
+                <img src="../images/poker-hand-mirror.png" alt="Poker Hand" class="mini-img">
+                <img src="../images/slot-machine-mirror.png" alt="Slot Machine" class="mini-img">
+                <img src="../images/dice1.png" alt="Dice 1" class="mini-img">
+                <img src="../images/dice2.png" alt="Dice 2" class="mini-img">
+                <img src="../images/dice3.png" alt="Dice 3" class="mini-img">
+                <h1>Dice Game</h1>
+                <img src="../images/dice4.png" alt="Dice 4" class="mini-img">
+                <img src="../images/dice5.png" alt="Dice 5" class="mini-img">
+                <img src="../images/dice6.png" alt="Dice 6" class="mini-img">
+                <img src="../images/slot-machine.png" alt="Slot Machine" class="mini-img">
+                <img src="../images/poker-hand.png" alt="Poker Hand" class="mini-img">
+                <img src="../images/token.png" alt="Poker Token" class="mini-img">
+            </div>
+            <div class="dice-section">
+                <div class="player">
+                    <h2>Player</h2>
+                    <img src="../images/dice-placeholder.png" alt="Player's dice" id="playerDice1">
+                    <img src="../images/dice-placeholder.png" alt="Player's dice" id="playerDice2">
+                    <p>Round Score: <span id="playerRoundScore">0</span></p>
+                </div>
+                <div class="computer">
+                    <h2>Computer</h2>
+                    <img src="../images/dice-placeholder.png" alt="Computer's dice" id="computerDice1">
+                    <img src="../images/dice-placeholder.png" alt="Computer's dice" id="computerDice2">
+                    <p>Round Score: <span id="computerRoundScore">0</span></p>
+                </div>
+            </div>
+            <div class="score-section">
+                <h3>Total Scores</h3>
+                <p>Player: <span id="playerTotalScore">0</span></p>
+                <p>Computer: <span id="computerTotalScore">0</span></p>
+            </div>
+            <div class="control-section">
+                <button id="rollButton">Roll Dice</button>
+                <button id="resetButton">New Game</button>
+            </div>
+            <div class="winner-section" id="winnerMessage"></div>
+            <div class="control-section">
+                <button id="rulesButton">Game Rules</button>
+            </div>
+            <div id="rulesSection" class="hidden"> <!-- Container for rules, initially hidden -->
+                <h3>Game Rules</h3>
+                <ol>
+                    <li><strong>Roll the Dice:</strong> At the beginning of each round, the player rolls two dice.</li>
+                    <li>
+                        <strong>Check for Ones:</strong> If either of the dice shows a 1, the score for that round is 0.
+                        <ul>
+                            <li>Example: If the dice show 6 and 1, the score is 0.</li>
+                        </ul>
+                    </li>
+                    <li>
+                        <strong>Check for Pairs:</strong> If both dice show the same number, the score is the sum of the two dice multiplied by 2.
+                        <ul>
+                            <li>Example: If the dice show 5 and 5, the score is (5+5) * 2 = 20.</li>
+                        </ul>
+                    </li>
+                    <li>
+                        <strong>Calculate Other Scores:</strong> If the roll does not meet the criteria of the first two rules, the score is the sum of the two dice.
+                        <ul>
+                            <li>Example: If the dice show 3 and 2, the score is 3+2 = 5.</li>
+                        </ul>
+                    </li>
+                    <li><strong>Repeat for Each Round:</strong> These rules apply to each round of the game, and the player's score for the round is added to their total score.</li>
+                </ol>
+            </div>
+        </div>
+
+    </div>
+
+    <footer>
+        <h3>Ila Koukia</h3>
+        <p>Thanks for the great class Jeff!</p>
+        <p>Copyleft 2024&#169;</p>
+    </footer>
+    
+
+</body>
+</html>
